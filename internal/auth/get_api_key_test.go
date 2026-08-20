@@ -28,7 +28,7 @@ func TestGetAPIKey_MissingHeader(t *testing.T) {
 	}
 	if err != ErrNoAuthHeaderIncluded {
 		t.Errorf("expected ErrNoAuthHeaderIncluded, got: %v", err)
-	
+	}
 }
 
 func TestGetAPIKey_MalformedHeader_NoKey(t *testing.T) {
