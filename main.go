@@ -2,6 +2,8 @@ package main
 
 import (
 	"database/sql"
+	"time"
+	"strconv"
 	"embed"
 	"io"
 	"log"
@@ -91,8 +93,12 @@ func main() {
 	srv := &http.Server{
 		Addr:    ":" + port,
 		Handler: router,
+		ReadHeaderTimeout: 5 * time.Second,
 	}
 
-	log.Printf("Serving on port: %s\n", port)
-	log.Fatal(srv.ListenAndServe())
+portNum, err := strconv.Atoi(port)
+if err != nil {
+	log.Fatal("Invalid port: value must be numeric")
 }
+log.Printf("Serving on port: %d\n", portNum)
+log.Fatal(srv.ListenAndServe())
