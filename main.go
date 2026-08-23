@@ -2,13 +2,13 @@ package main
 
 import (
 	"database/sql"
-	"time"
-	"strconv"
 	"embed"
 	"io"
 	"log"
 	"net/http"
 	"os"
+	"strconv"
+	"time"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -91,14 +91,15 @@ func main() {
 
 	router.Mount("/v1", v1Router)
 	srv := &http.Server{
-		Addr:    ":" + port,
-		Handler: router,
+		Addr:              ":" + port,
+		Handler:           router,
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 
-portNum, err := strconv.Atoi(port)
-if err != nil {
-	log.Fatal("Invalid port: value must be numeric")
+	portNum, err := strconv.Atoi(port)
+	if err != nil {
+		log.Fatal("Invalid port: value must be numeric")
+	}
+	log.Printf("Serving on port: %d\n", portNum)
+	log.Fatal(srv.ListenAndServe())
 }
-log.Printf("Serving on port: %d\n", portNum)
-log.Fatal(srv.ListenAndServe())}
