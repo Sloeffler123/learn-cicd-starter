@@ -187,8 +187,14 @@
 /* Define if you have the 'ctermid_r' function. */
 /* #undef HAVE_CTERMID_R */
 
+/* Define if you have the 'ESCDELAY' variable. */
+#define HAVE_CURSES_ESCDELAY 1
+
 /* Define if you have the 'filter' function. */
 #define HAVE_CURSES_FILTER 1
+
+/* Define if you have the 'getmouse' function with the X/Open signature. */
+#define HAVE_CURSES_GETMOUSE 1
 
 /* Define to 1 if you have the <curses.h> header file. */
 #define HAVE_CURSES_H 1
@@ -211,8 +217,17 @@
 /* Define if you have the 'resize_term' function. */
 #define HAVE_CURSES_RESIZE_TERM 1
 
+/* Define if you have the 'set_escdelay' function. */
+#define HAVE_CURSES_SET_ESCDELAY 1
+
+/* Define if you have the 'set_tabsize' function. */
+#define HAVE_CURSES_SET_TABSIZE 1
+
 /* Define if you have the 'syncok' function. */
 #define HAVE_CURSES_SYNCOK 1
+
+/* Define if you have the 'TABSIZE' variable. */
+#define HAVE_CURSES_TABSIZE 1
 
 /* Define if you have the 'typeahead' function. */
 #define HAVE_CURSES_TYPEAHEAD 1
@@ -299,6 +314,9 @@
 
 /* Define to 1 if you have the 'dlopen' function. */
 #define HAVE_DLOPEN 1
+
+/* Define to 1 if you have the 'dl_iterate_phdr' function. */
+#define HAVE_DL_ITERATE_PHDR 1
 
 /* Define to 1 if you have the 'dup' function. */
 #define HAVE_DUP 1
@@ -584,7 +602,7 @@
 /* #undef HAVE_GETRANDOM */
 
 /* Define to 1 if the Linux getrandom() syscall is available */
-/* #undef HAVE_GETRANDOM_SYSCALL */
+#define HAVE_GETRANDOM_SYSCALL 1
 
 /* Define to 1 if you have the 'getresgid' function. */
 #define HAVE_GETRESGID 1
@@ -729,7 +747,7 @@
 #define HAVE_LINUX_CAN_H 1
 
 /* Define to 1 if you have the <linux/can/j1939.h> header file. */
-/* #undef HAVE_LINUX_CAN_J1939_H */
+#define HAVE_LINUX_CAN_J1939_H 1
 
 /* Define if compiling using Linux 3.6 or later. */
 #define HAVE_LINUX_CAN_RAW_FD_FRAMES 1
@@ -738,7 +756,7 @@
 #define HAVE_LINUX_CAN_RAW_H 1
 
 /* Define if compiling using Linux 4.1 or later. */
-/* #undef HAVE_LINUX_CAN_RAW_JOIN_FILTERS */
+#define HAVE_LINUX_CAN_RAW_JOIN_FILTERS 1
 
 /* Define to 1 if you have the <linux/fs.h> header file. */
 #define HAVE_LINUX_FS_H 1
@@ -750,13 +768,13 @@
 #define HAVE_LINUX_MEMFD_H 1
 
 /* Define to 1 if you have the <linux/netfilter_ipv4.h> header file. */
-/* #undef HAVE_LINUX_NETFILTER_IPV4_H */
+#define HAVE_LINUX_NETFILTER_IPV4_H 1
 
 /* Define to 1 if you have the <linux/netlink.h> header file. */
 #define HAVE_LINUX_NETLINK_H 1
 
 /* Define to 1 if you have the <linux/qrtr.h> header file. */
-/* #undef HAVE_LINUX_QRTR_H */
+#define HAVE_LINUX_QRTR_H 1
 
 /* Define to 1 if you have the <linux/random.h> header file. */
 #define HAVE_LINUX_RANDOM_H 1
@@ -855,7 +873,7 @@
 /* #undef HAVE_NCURSES */
 
 /* Define if you have the 'ncursesw' library */
-/* #undef HAVE_NCURSESW */
+#define HAVE_NCURSESW 1
 
 /* Define to 1 if you have the <ncursesw/curses.h> header file. */
 #define HAVE_NCURSESW_CURSES_H 1
@@ -1355,6 +1373,9 @@
 /* Define to 1 if you have the 'sysconf' function. */
 #define HAVE_SYSCONF 1
 
+/* Define to 1 if you have the 'sysctlbyname' function. */
+/* #undef HAVE_SYSCTLBYNAME */
+
 /* Define to 1 if you have the <sysexits.h> header file. */
 #define HAVE_SYSEXITS_H 1
 
@@ -1458,6 +1479,9 @@
 
 /* Define to 1 if you have the <sys/syscall.h> header file. */
 #define HAVE_SYS_SYSCALL_H 1
+
+/* Define to 1 if you have the <sys/sysctl.h> header file. */
+#define HAVE_SYS_SYSCTL_H 1
 
 /* Define to 1 if you have the <sys/sysmacros.h> header file. */
 #define HAVE_SYS_SYSMACROS_H 1
@@ -2023,6 +2047,9 @@
 
 /* HACL* library can compile SIMD256 implementations */
 /* #undef _Py_HACL_CAN_COMPILE_VEC256 */
+
+/* Thread stack size set by the linker (in bytes). */
+/* #undef _Py_LINKER_THREAD_STACK_SIZE */
 
 /* Define to 1 if the machine stack grows down (default); 0 if it grows up. */
 #define _Py_STACK_GROWS_DOWN 1

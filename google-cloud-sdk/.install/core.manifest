@@ -179,6 +179,7 @@ lib/googlecloudsdk/api_lib/auth/service_account.py
 lib/googlecloudsdk/api_lib/auth/util.py
 lib/googlecloudsdk/api_lib/authz_toolkit/__init__.py
 lib/googlecloudsdk/api_lib/backupdr/__init__.py
+lib/googlecloudsdk/api_lib/backupdr/applied_auto_protection_policies.py
 lib/googlecloudsdk/api_lib/backupdr/auto_protection_policies.py
 lib/googlecloudsdk/api_lib/backupdr/backup_plan_associations.py
 lib/googlecloudsdk/api_lib/backupdr/backup_plans.py
@@ -718,6 +719,7 @@ lib/googlecloudsdk/api_lib/filestore/__init__.py
 lib/googlecloudsdk/api_lib/filestore/filestore_client.py
 lib/googlecloudsdk/api_lib/firebase/__init__.py
 lib/googlecloudsdk/api_lib/firebase/apps.py
+lib/googlecloudsdk/api_lib/firebase/auth.py
 lib/googlecloudsdk/api_lib/firebase/exceptions.py
 lib/googlecloudsdk/api_lib/firebase/security_rules.py
 lib/googlecloudsdk/api_lib/firebase/test/__init__.py
@@ -1088,6 +1090,7 @@ lib/googlecloudsdk/api_lib/secrets/__init__.py
 lib/googlecloudsdk/api_lib/secrets/api.py
 lib/googlecloudsdk/api_lib/securesourcemanager/__init__.py
 lib/googlecloudsdk/api_lib/securesourcemanager/instances.py
+lib/googlecloudsdk/api_lib/securesourcemanager/pull_requests.py
 lib/googlecloudsdk/api_lib/securesourcemanager/repositories.py
 lib/googlecloudsdk/api_lib/service_directory/__init__.py
 lib/googlecloudsdk/api_lib/service_directory/base.py
@@ -1155,7 +1158,7 @@ lib/googlecloudsdk/api_lib/storage/api_factory.py
 lib/googlecloudsdk/api_lib/storage/cloud_api.py
 lib/googlecloudsdk/api_lib/storage/errors.py
 lib/googlecloudsdk/api_lib/storage/feature_config_api.py
-lib/googlecloudsdk/api_lib/storage/ftp.py
+lib/googlecloudsdk/api_lib/storage/ftp_api.py
 lib/googlecloudsdk/api_lib/storage/gcs_download.py
 lib/googlecloudsdk/api_lib/storage/gcs_grpc/__init__.py
 lib/googlecloudsdk/api_lib/storage/gcs_grpc/client.py
@@ -3026,6 +3029,8 @@ lib/googlecloudsdk/command_lib/observability/__init__.py
 lib/googlecloudsdk/command_lib/observability/settings_resources.yaml
 lib/googlecloudsdk/command_lib/observability/util.py
 lib/googlecloudsdk/command_lib/observability/v1_resources.yaml
+lib/googlecloudsdk/command_lib/onboarding/__init__.py
+lib/googlecloudsdk/command_lib/onboarding/user_inputs.py
 lib/googlecloudsdk/command_lib/oracle_database/__init__.py
 lib/googlecloudsdk/command_lib/oracle_database/default_resources.yaml
 lib/googlecloudsdk/command_lib/oracle_database/filter_rewrite.py
@@ -3242,7 +3247,9 @@ lib/googlecloudsdk/command_lib/run/stages.py
 lib/googlecloudsdk/command_lib/run/streaming.py
 lib/googlecloudsdk/command_lib/run/sync/__init__.py
 lib/googlecloudsdk/command_lib/run/sync/dockerfile_parser.py
+lib/googlecloudsdk/command_lib/run/sync/log_tailer.py
 lib/googlecloudsdk/command_lib/run/sync/polling_watcher.py
+lib/googlecloudsdk/command_lib/run/sync/ssh_util.py
 lib/googlecloudsdk/command_lib/run/sync/sync_rule_util.py
 lib/googlecloudsdk/command_lib/run/sync/sync_util.py
 lib/googlecloudsdk/command_lib/run/sync/syncer.py
@@ -3425,8 +3432,7 @@ lib/googlecloudsdk/command_lib/storage/flags.py
 lib/googlecloudsdk/command_lib/storage/folder_util.py
 lib/googlecloudsdk/command_lib/storage/ftp/__init__.py
 lib/googlecloudsdk/command_lib/storage/ftp/operations_util.py
-lib/googlecloudsdk/command_lib/storage/ftp/servers_util.py
-lib/googlecloudsdk/command_lib/storage/ftp/users_util.py
+lib/googlecloudsdk/command_lib/storage/ftp/resource_args.py
 lib/googlecloudsdk/command_lib/storage/gzip_util.py
 lib/googlecloudsdk/command_lib/storage/hash_util.py
 lib/googlecloudsdk/command_lib/storage/iam_command_util.py
@@ -3719,6 +3725,7 @@ lib/googlecloudsdk/core/cache/resource_cache.py
 lib/googlecloudsdk/core/cache/sqlite_cache.py
 lib/googlecloudsdk/core/config.json
 lib/googlecloudsdk/core/config.py
+lib/googlecloudsdk/core/config_sqlite_store.py
 lib/googlecloudsdk/core/configurations/__init__.py
 lib/googlecloudsdk/core/configurations/named_configs.py
 lib/googlecloudsdk/core/configurations/properties_file.py
@@ -3812,6 +3819,7 @@ lib/googlecloudsdk/core/resource/resource_filter_scrub.py
 lib/googlecloudsdk/core/resource/resource_info.py
 lib/googlecloudsdk/core/resource/resource_keys_expr.py
 lib/googlecloudsdk/core/resource/resource_lex.py
+lib/googlecloudsdk/core/resource/resource_parser_transform.py
 lib/googlecloudsdk/core/resource/resource_printer.py
 lib/googlecloudsdk/core/resource/resource_printer_base.py
 lib/googlecloudsdk/core/resource/resource_printer_types.py
@@ -6494,6 +6502,7 @@ lib/googlecloudsdk/schemas/compute/v1/BackendServiceLocalityLoadBalancingPolicyC
 lib/googlecloudsdk/schemas/compute/v1/BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy.yaml
 lib/googlecloudsdk/schemas/compute/v1/BackendServiceLocalityLoadBalancingPolicyConfigPolicy.yaml
 lib/googlecloudsdk/schemas/compute/v1/BackendServiceLogConfig.yaml
+lib/googlecloudsdk/schemas/compute/v1/BackendServiceLogConfigLoggingHttpHeader.yaml
 lib/googlecloudsdk/schemas/compute/v1/BackendServiceNetworkPassThroughLbTrafficPolicy.yaml
 lib/googlecloudsdk/schemas/compute/v1/BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.yaml
 lib/googlecloudsdk/schemas/compute/v1/BackendServiceOrchestrationInfo.yaml
@@ -6961,11 +6970,6 @@ lib/googlecloudsdk/schemas/networksecurity/v1beta1/ValidationCA.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/AWSV4Signature.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/AddValue.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/AgentConnectivityTemplate.yaml
-lib/googlecloudsdk/schemas/networkservices/v1/AgentConnectivityTemplateGoogleManaged.yaml
-lib/googlecloudsdk/schemas/networkservices/v1/AgentConnectivityTemplateNetworkConfig.yaml
-lib/googlecloudsdk/schemas/networkservices/v1/AgentConnectivityTemplateNetworkConfigDnsPeeringConfig.yaml
-lib/googlecloudsdk/schemas/networkservices/v1/AgentConnectivityTemplateNetworkConfigEgress.yaml
-lib/googlecloudsdk/schemas/networkservices/v1/AgentConnectivityTemplateSelfManaged.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/AgentGateway.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/AgentGatewayGoogleManaged.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/AgentGatewayNetworkConfig.yaml
@@ -6978,9 +6982,11 @@ lib/googlecloudsdk/schemas/networkservices/v1/CDNPolicyAddSignaturesOptions.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/CDNPolicyCacheKeyPolicy.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/CDNPolicySignedTokenOptions.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/CORSPolicy.yaml
+lib/googlecloudsdk/schemas/networkservices/v1/DnsPeeringConfig.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/EdgeCacheKeyset.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/EdgeCacheOrigin.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/EdgeCacheService.yaml
+lib/googlecloudsdk/schemas/networkservices/v1/EgressNetworkConfig.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/EndpointMatcher.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/EndpointMatcherMetadataLabelMatcher.yaml
 lib/googlecloudsdk/schemas/networkservices/v1/EndpointMatcherMetadataLabelMatcherMetadataLabels.yaml
@@ -7071,11 +7077,6 @@ lib/googlecloudsdk/schemas/networkservices/v1/UrlRewrite.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/AWSV4Signature.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/AddValue.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/AgentConnectivityTemplate.yaml
-lib/googlecloudsdk/schemas/networkservices/v1alpha1/AgentConnectivityTemplateGoogleManaged.yaml
-lib/googlecloudsdk/schemas/networkservices/v1alpha1/AgentConnectivityTemplateNetworkConfig.yaml
-lib/googlecloudsdk/schemas/networkservices/v1alpha1/AgentConnectivityTemplateNetworkConfigDnsPeeringConfig.yaml
-lib/googlecloudsdk/schemas/networkservices/v1alpha1/AgentConnectivityTemplateNetworkConfigEgress.yaml
-lib/googlecloudsdk/schemas/networkservices/v1alpha1/AgentConnectivityTemplateSelfManaged.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/AgentGateway.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/AgentGatewayGoogleManaged.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/AgentGatewayNetworkConfig.yaml
@@ -7087,9 +7088,11 @@ lib/googlecloudsdk/schemas/networkservices/v1alpha1/CDNPolicyAddSignaturesOption
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/CDNPolicyCacheKeyPolicy.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/CDNPolicySignedTokenOptions.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/CORSPolicy.yaml
+lib/googlecloudsdk/schemas/networkservices/v1alpha1/DnsPeeringConfig.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/EdgeCacheKeyset.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/EdgeCacheOrigin.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/EdgeCacheService.yaml
+lib/googlecloudsdk/schemas/networkservices/v1alpha1/EgressNetworkConfig.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/EndpointConfigSelector.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/EndpointMatcher.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/EndpointPolicy.yaml
@@ -7203,11 +7206,6 @@ lib/googlecloudsdk/schemas/networkservices/v1alpha1/TrafficPortSelector.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/UrlRedirect.yaml
 lib/googlecloudsdk/schemas/networkservices/v1alpha1/UrlRewrite.yaml
 lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentConnectivityTemplate.yaml
-lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentConnectivityTemplateGoogleManaged.yaml
-lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentConnectivityTemplateNetworkConfig.yaml
-lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentConnectivityTemplateNetworkConfigDnsPeeringConfig.yaml
-lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentConnectivityTemplateNetworkConfigEgress.yaml
-lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentConnectivityTemplateSelfManaged.yaml
 lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentGateway.yaml
 lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentGatewayGoogleManaged.yaml
 lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentGatewayNetworkConfig.yaml
@@ -7215,6 +7213,8 @@ lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentGatewayNetworkConfigDnsP
 lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentGatewayNetworkConfigEgress.yaml
 lib/googlecloudsdk/schemas/networkservices/v1beta1/AgentGatewaySelfManaged.yaml
 lib/googlecloudsdk/schemas/networkservices/v1beta1/AuthzExtension.yaml
+lib/googlecloudsdk/schemas/networkservices/v1beta1/DnsPeeringConfig.yaml
+lib/googlecloudsdk/schemas/networkservices/v1beta1/EgressNetworkConfig.yaml
 lib/googlecloudsdk/schemas/networkservices/v1beta1/EndpointMatcher.yaml
 lib/googlecloudsdk/schemas/networkservices/v1beta1/EndpointPolicy.yaml
 lib/googlecloudsdk/schemas/networkservices/v1beta1/ExpressLink.yaml
@@ -8737,7 +8737,11 @@ lib/surface/authz_toolkit/target_associations/export.yaml
 lib/surface/authz_toolkit/target_associations/import.yaml
 lib/surface/authz_toolkit/target_associations/list.yaml
 lib/surface/backup_dr/__init__.py
+lib/surface/backup_dr/applied_auto_protection_policies/__init__.py
+lib/surface/backup_dr/applied_auto_protection_policies/list.py
 lib/surface/backup_dr/auto_protection_bindings/__init__.py
+lib/surface/backup_dr/auto_protection_bindings/create.yaml
+lib/surface/backup_dr/auto_protection_bindings/delete.yaml
 lib/surface/backup_dr/auto_protection_bindings/describe.yaml
 lib/surface/backup_dr/auto_protection_bindings/list.yaml
 lib/surface/backup_dr/auto_protection_policies/__init__.py
@@ -8796,6 +8800,8 @@ lib/surface/backup_dr/backups/restore/disk.py
 lib/surface/backup_dr/backups/restore/disk.yaml
 lib/surface/backup_dr/backups/update.py
 lib/surface/backup_dr/backups/update.yaml
+lib/surface/backup_dr/binding_matching_resources/__init__.py
+lib/surface/backup_dr/binding_matching_resources/list.yaml
 lib/surface/backup_dr/data_source_references/__init__.py
 lib/surface/backup_dr/data_source_references/describe.yaml
 lib/surface/backup_dr/data_source_references/fetch_for_resource_type.py
@@ -9702,6 +9708,7 @@ lib/surface/compute/composite_health_checks/get_health.py
 lib/surface/compute/composite_health_checks/get_health.yaml
 lib/surface/compute/composite_health_checks/list.py
 lib/surface/compute/composite_health_checks/list.yaml
+lib/surface/compute/composite_health_checks/test_iam_permissions.yaml
 lib/surface/compute/composite_health_checks/update.yaml
 lib/surface/compute/config_ssh.py
 lib/surface/compute/config_ssh.yaml
@@ -9904,6 +9911,7 @@ lib/surface/compute/https_health_checks/test_iam_permissions.yaml
 lib/surface/compute/https_health_checks/update.py
 lib/surface/compute/image_views/__init__.py
 lib/surface/compute/image_views/describe.yaml
+lib/surface/compute/image_views/list.yaml
 lib/surface/compute/images/__init__.py
 lib/surface/compute/images/add_iam_policy_binding.yaml
 lib/surface/compute/images/add_labels.py
@@ -10661,6 +10669,7 @@ lib/surface/compute/reservations/sub_blocks/report_subblock_as_faulty.py
 lib/surface/compute/reservations/sub_blocks/report_subblock_as_faulty.yaml
 lib/surface/compute/reservations/sub_blocks/set_iam_policy.py
 lib/surface/compute/reservations/sub_blocks/test_iam_permissions.py
+lib/surface/compute/reservations/sub_blocks/update.py
 lib/surface/compute/reservations/test_iam_permissions.yaml
 lib/surface/compute/reservations/update.py
 lib/surface/compute/reservations/update.yaml
@@ -10800,6 +10809,7 @@ lib/surface/compute/service_attachments/delete.py
 lib/surface/compute/service_attachments/describe.py
 lib/surface/compute/service_attachments/list.py
 lib/surface/compute/service_attachments/set_iam_policy.yaml
+lib/surface/compute/service_attachments/test_iam_permissions.yaml
 lib/surface/compute/service_attachments/update.py
 lib/surface/compute/shared_vpc/__init__.py
 lib/surface/compute/shared_vpc/associated_projects/__init__.py
@@ -12635,6 +12645,8 @@ lib/surface/design_center/spaces/application_templates/_partials/_delete_alpha.y
 lib/surface/design_center/spaces/application_templates/_partials/_delete_ga.yaml
 lib/surface/design_center/spaces/application_templates/_partials/_describe_alpha.yaml
 lib/surface/design_center/spaces/application_templates/_partials/_describe_ga.yaml
+lib/surface/design_center/spaces/application_templates/_partials/_export_alpha.yaml
+lib/surface/design_center/spaces/application_templates/_partials/_export_ga.yaml
 lib/surface/design_center/spaces/application_templates/_partials/_generate_alpha.yaml
 lib/surface/design_center/spaces/application_templates/_partials/_generate_ga.yaml
 lib/surface/design_center/spaces/application_templates/_partials/_import_alpha.yaml
@@ -12681,6 +12693,7 @@ lib/surface/design_center/spaces/application_templates/components/update.yaml
 lib/surface/design_center/spaces/application_templates/create.yaml
 lib/surface/design_center/spaces/application_templates/delete.yaml
 lib/surface/design_center/spaces/application_templates/describe.yaml
+lib/surface/design_center/spaces/application_templates/export.yaml
 lib/surface/design_center/spaces/application_templates/generate.yaml
 lib/surface/design_center/spaces/application_templates/generate_assessment_report.py
 lib/surface/design_center/spaces/application_templates/import.yaml
@@ -12709,12 +12722,15 @@ lib/surface/design_center/spaces/application_templates/revisions/_partials/_dele
 lib/surface/design_center/spaces/application_templates/revisions/_partials/_delete_ga.yaml
 lib/surface/design_center/spaces/application_templates/revisions/_partials/_describe_alpha.yaml
 lib/surface/design_center/spaces/application_templates/revisions/_partials/_describe_ga.yaml
+lib/surface/design_center/spaces/application_templates/revisions/_partials/_export_alpha.yaml
+lib/surface/design_center/spaces/application_templates/revisions/_partials/_export_ga.yaml
 lib/surface/design_center/spaces/application_templates/revisions/_partials/_generate_alpha.yaml
 lib/surface/design_center/spaces/application_templates/revisions/_partials/_generate_ga.yaml
 lib/surface/design_center/spaces/application_templates/revisions/_partials/_list_alpha.yaml
 lib/surface/design_center/spaces/application_templates/revisions/_partials/_list_ga.yaml
 lib/surface/design_center/spaces/application_templates/revisions/delete.yaml
 lib/surface/design_center/spaces/application_templates/revisions/describe.yaml
+lib/surface/design_center/spaces/application_templates/revisions/export.yaml
 lib/surface/design_center/spaces/application_templates/revisions/generate.yaml
 lib/surface/design_center/spaces/application_templates/revisions/list.yaml
 lib/surface/design_center/spaces/application_templates/update.yaml
@@ -12946,6 +12962,7 @@ lib/surface/developer_knowledge/__init__.py
 lib/surface/developer_knowledge/answer_query.yaml
 lib/surface/developer_knowledge/documents/__init__.py
 lib/surface/developer_knowledge/documents/describe.yaml
+lib/surface/developer_knowledge/documents/search_chunks.py
 lib/surface/developer_knowledge/documents/search_chunks.yaml
 lib/surface/device_run/__init__.py
 lib/surface/device_run/devices/__init__.py
@@ -12964,6 +12981,7 @@ lib/surface/device_run/sessions/describe.py
 lib/surface/device_run/sessions/list.py
 lib/surface/device_run/sessions/submit/__init__.py
 lib/surface/device_run/sessions/submit/instrumentation.py
+lib/surface/device_run/sessions/submit/xctest.py
 lib/surface/device_run/sessions/wait.py
 lib/surface/dialogflow/__init__.py
 lib/surface/dialogflow/agent/__init__.py
@@ -13539,6 +13557,9 @@ lib/surface/firebase/__init__.py
 lib/surface/firebase/apps/__init__.py
 lib/surface/firebase/apps/create.py
 lib/surface/firebase/apps/list.py
+lib/surface/firebase/auth/__init__.py
+lib/surface/firebase/auth/providers/__init__.py
+lib/surface/firebase/auth/providers/enable.py
 lib/surface/firebase/security_rules/__init__.py
 lib/surface/firebase/security_rules/get.py
 lib/surface/firebase/security_rules/list.py
@@ -14758,6 +14779,16 @@ lib/surface/lustre/instances/_partials/_update_ga.yaml
 lib/surface/lustre/instances/create.yaml
 lib/surface/lustre/instances/delete.yaml
 lib/surface/lustre/instances/describe.yaml
+lib/surface/lustre/instances/directory_policies/__init__.py
+lib/surface/lustre/instances/directory_policies/_init_extensions.py
+lib/surface/lustre/instances/directory_policies/_partials/_create_alpha.yaml
+lib/surface/lustre/instances/directory_policies/_partials/_delete_alpha.yaml
+lib/surface/lustre/instances/directory_policies/_partials/_describe_alpha.yaml
+lib/surface/lustre/instances/directory_policies/_partials/_list_alpha.yaml
+lib/surface/lustre/instances/directory_policies/create.yaml
+lib/surface/lustre/instances/directory_policies/delete.yaml
+lib/surface/lustre/instances/directory_policies/describe.yaml
+lib/surface/lustre/instances/directory_policies/list.yaml
 lib/surface/lustre/instances/export_data.yaml
 lib/surface/lustre/instances/import_data.yaml
 lib/surface/lustre/instances/list.yaml
@@ -16090,6 +16121,7 @@ lib/surface/network_security/url_lists/export.yaml
 lib/surface/network_security/url_lists/import.yaml
 lib/surface/network_security/url_lists/list.yaml
 lib/surface/network_services/__init__.py
+lib/surface/network_services/_init_extensions.py
 lib/surface/network_services/agent_connectivity_templates/__init__.py
 lib/surface/network_services/agent_connectivity_templates/delete.yaml
 lib/surface/network_services/agent_connectivity_templates/describe.yaml
@@ -18280,6 +18312,10 @@ lib/surface/source_manager/locations/list.yaml
 lib/surface/source_manager/operations/__init__.py
 lib/surface/source_manager/operations/describe.yaml
 lib/surface/source_manager/operations/list.yaml
+lib/surface/source_manager/pull_requests/__init__.py
+lib/surface/source_manager/pull_requests/create.py
+lib/surface/source_manager/pull_requests/describe.yaml
+lib/surface/source_manager/pull_requests/list.yaml
 lib/surface/source_manager/repos/__init__.py
 lib/surface/source_manager/repos/add_iam_policy_binding.yaml
 lib/surface/source_manager/repos/create.py
@@ -18570,13 +18606,13 @@ lib/surface/storage/folders/delete.py
 lib/surface/storage/folders/describe.py
 lib/surface/storage/folders/list.py
 lib/surface/storage/ftp/__init__.py
-lib/surface/storage/ftp/operations/__init__.py
-lib/surface/storage/ftp/operations/describe.py
 lib/surface/storage/ftp/servers/__init__.py
 lib/surface/storage/ftp/servers/create.py
 lib/surface/storage/ftp/servers/delete.py
 lib/surface/storage/ftp/servers/describe.py
 lib/surface/storage/ftp/servers/list.py
+lib/surface/storage/ftp/servers/start.py
+lib/surface/storage/ftp/servers/stop.py
 lib/surface/storage/ftp/servers/update.py
 lib/surface/storage/ftp/users/__init__.py
 lib/surface/storage/ftp/users/create.py

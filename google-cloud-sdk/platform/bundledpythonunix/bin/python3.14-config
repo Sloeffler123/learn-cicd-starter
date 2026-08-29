@@ -41,7 +41,7 @@ exec_prefix="${prefix}"
 exec_prefix_real=${prefix_real}
 includedir=$(echo "${prefix}/include" | sed "s#$prefix#$prefix_real#")
 libdir=$(echo "${exec_prefix}/lib" | sed "s#$prefix#$prefix_real#")
-CFLAGS=$(echo "-O3  -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer  -fPIC  " | sed "s#$prefix#$prefix_real#")
+CFLAGS=$(echo "  -O3 -fstack-protector -fstack-clash-protection -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2  -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer  -fPIC  " | sed "s#$prefix#$prefix_real#")
 VERSION="3.14"
 LIBM="-lm"
 LIBC=""
